@@ -19,3 +19,9 @@ rake db:create db:migrate db:seed
 foreman start
 
 ```
+
+### Some things to add in the future
+⋅⋅* Pagination
+⋅⋅* Authentication so users can save their own lists
+
+
