@@ -21,7 +21,7 @@ foreman start
 ```
 
 ### Some things to add in the future
-⋅⋅* Pagination
-⋅⋅* Authentication so users can save their own lists
-
+* Pagination for larger data sets
+* Authentication so users can save their own lists
+* Get those damn bootstrap arrows to show up
 
