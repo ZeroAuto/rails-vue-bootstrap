@@ -3,7 +3,7 @@
 if you do not have postgres running locally you can follow the instructions here:
 https://coderwall.com/p/dovmsg/how-to-make-your-rails-app-start-talking-to-a-postgres-database
 
-clone repo and create a .env file in the root with database username and password in like such:
+clone repo and create a .env file in the root folder with database username and password in like such:
 
  ```
 POSTGRES_USER=<postgres_username>

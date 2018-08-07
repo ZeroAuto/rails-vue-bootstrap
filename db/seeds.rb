@@ -41,3 +41,33 @@ games = [
     winnings: Random.rand(0..9999999)
   )
 end
+
+Filter.create(
+  fields: [
+    {
+      key: 'name',
+      sortable: true
+    },
+    {
+      key: 'game',
+      sortable: true
+    }
+  ]
+)
+
+Filter.create(
+  fields: [
+    {
+      key: 'name',
+      sortable: true
+    },
+    {
+      key: 'rating',
+      sortable: true
+    },
+    {
+      key: 'balance',
+      sortable: true
+    }
+  ]
+)
