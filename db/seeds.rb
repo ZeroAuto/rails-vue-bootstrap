@@ -53,7 +53,7 @@ Filter.create(
       sortable: true
     }
   ],
-  search_term: 'new york'
+  search_term: 'volleyball'
 )
 
 Filter.create(
@@ -71,5 +71,5 @@ Filter.create(
       sortable: true
     }
   ],
-  search_term: 'los angeles'
+  search_term: 'basketball'
 )

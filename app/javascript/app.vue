@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <b-table striped hover :items="players" :fields="checkedFields"></b-table>
+          <b-table striped hover :items="filteredData" :fields="checkedFields"></b-table>
         </div>
         <div class="col-md-3">
           <div v-for="field in fields" class="form-group">
@@ -26,6 +26,7 @@ import axios from 'axios';
 export default {
   data: function () {
     return {
+      search_term: "",
       players: [],
       checkedFields: [],
       fields: [
@@ -64,8 +65,31 @@ export default {
       this.errors.push(e)
     })
 
-    this.checkedFields = this.fields
-    this.getSavedFilters()
+    if (this.search_term != "") {
+      // this.players = 
+    }
+
+    this.checkedFields = this.fields;
+    this.getSavedFilters();
+  },
+
+  computed: {
+    //do some stuff
+    filteredData: function() {
+      // let filteredPlayers = this.players;
+      // return filteredPlayers;
+      // console.log('did this happen?')
+      // return filteredColumns('los angeles');
+      // return this.players.filter((player) => {
+      //   return player.game.includes(this.search_term);
+      // })
+      var lowSearch = this.search_term.toLowerCase();
+      return this.players.filter(function(player){
+          return Object.values(player).some( val => 
+              String(val).toLowerCase().includes(lowSearch) 
+          );
+      });
+    }
   },
 
   methods: {
@@ -79,7 +103,7 @@ export default {
       })
     },
 
-    loadSavedFilter: function(fields) {
+    loadSavedFilter: function(fields, search_term) {
       this.checkedFields = fields
     },
 
@@ -96,6 +120,15 @@ export default {
       .catch(e => {
         this.errors.push(e)
       })
+    },
+
+    filteredColumns: function (search) {
+      var lowSearch = search.toLowerCase();
+      return this.players.filter(function(player){
+          return Object.values(player).some( val => 
+              String(val).toLowerCase().includes(lowSearch) 
+          );
+      });
     }
   }
 }
