@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
-    <p v-for="player in players['players']">{{player.name}}</p>
+    <b-table striped hover :items="players['players']" :fields="fields"></b-table>
   </div>
 </template>
 
@@ -12,6 +12,28 @@ export default {
     return {
       message: "Hello Vue!",
       players: [],
+      fields: [
+        {
+          key: 'name',
+          sortable: true
+        },
+        {
+          key: 'game',
+          sortable: true
+        },
+        {
+          key: 'rating',
+          sortable: true
+        },
+        {
+          key: 'balance',
+          sortable: true
+        },
+        {
+          key: 'winnings',
+          sortable: true
+        }
+      ],
       errors: []
     }
   },
