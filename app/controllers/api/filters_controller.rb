@@ -1,5 +1,5 @@
 class Api::FiltersController < Api::ApiController
-  protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
 
   def index
     @filters = Filter.all
@@ -22,6 +22,6 @@ class Api::FiltersController < Api::ApiController
   private
 
   def filter_params
-    params.require(:filter).permit(:fields)
+    params.require(:filter).permit({:fields => []})
   end
 end
