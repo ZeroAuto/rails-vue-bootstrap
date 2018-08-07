@@ -91,11 +91,11 @@ export default {
       })
       .then(response => {
         console.log(response)
+        this.getSavedFilters()
       })
       .catch(e => {
         this.errors.push(e)
       })
-      this.getSavedFilters()
     }
   }
 }
