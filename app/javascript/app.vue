@@ -14,7 +14,7 @@
           <button type="button" class="btn btn-primary" v-on:click="saveFilterCurrent">Save Filter</button>
           <h3>Saved Filters</h3>
           <div v-for="filter in savedFilters">
-            <b-link href="#" v-on:click="loadSavedFilter(filter.fields)">{{filter.created_at}}</b-link>
+            <b-link href="#" v-on:click="loadSavedFilter(filter.fields, filter.search_term)">{{filter.created_at}}</b-link>
           </div>
         </div>
       </div>
@@ -37,6 +37,10 @@ export default {
         },
         {
           key: 'game',
+          sortable: true
+        },
+        {
+          key: 'city',
           sortable: true
         },
         {
@@ -66,24 +70,12 @@ export default {
       this.errors.push(e)
     })
 
-    if (this.search_term != "") {
-      // this.players = 
-    }
-
     this.checkedFields = this.fields;
     this.getSavedFilters();
   },
 
   computed: {
-    //do some stuff
     filteredData: function() {
-      // let filteredPlayers = this.players;
-      // return filteredPlayers;
-      // console.log('did this happen?')
-      // return filteredColumns('los angeles');
-      // return this.players.filter((player) => {
-      //   return player.game.includes(this.search_term);
-      // })
       var lowSearch = this.search_term.toLowerCase();
       return this.players.filter(function(player){
           return Object.values(player).some( val => 
@@ -106,12 +98,14 @@ export default {
 
     loadSavedFilter: function(fields, search_term) {
       this.checkedFields = fields
+      this.search_term = search_term
     },
 
     saveFilterCurrent: function() {
       axios.post('/api/filters', {
         filter: {
-          fields: this.checkedFields
+          fields: this.checkedFields,
+          search_term: this.search_term
         }
       })
       .then(response => {
