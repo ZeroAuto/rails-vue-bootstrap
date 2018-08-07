@@ -3,11 +3,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <p>{{ message }}</p>
-          <b-table striped hover :items="players['players']" :fields="fields"></b-table>
+          <b-table striped hover :items="players['players']" :fields="checkedFields"></b-table>
         </div>
         <div class="col-md-3">
-          These should be some checkboxes here
+          <input type='checkbox' v-for="field in fields" :value="{key: field.key, sortable: true}" v-model="checkedFields">
         </div>
       </div>
     </div>
@@ -19,8 +18,29 @@ import axios from 'axios';
 export default {
   data: function () {
     return {
-      message: "Hello Vue!",
       players: [],
+      checkedFields: [
+        {
+          key: 'name',
+          sortable: true
+        },
+        {
+          key: 'game',
+          sortable: true
+        },
+        {
+          key: 'rating',
+          sortable: true
+        },
+        {
+          key: 'balance',
+          sortable: true
+        },
+        {
+          key: 'winnings',
+          sortable: true
+        }
+      ],
       fields: [
         {
           key: 'name',
