@@ -55,7 +55,7 @@ export default {
   },
 
   created: function() {
-    axios.get('http://localhost:5000/api/players')
+    axios.get('/api/players')
     .then(response => {
       this.players = response.data['players']
     })
@@ -63,7 +63,7 @@ export default {
       this.errors.push(e)
     })
 
-    axios.get('http://localhost:5000/api/filters')
+    axios.get('/api/filters')
     .then(response => {
       this.savedFilters = response.data['filters']
     })
