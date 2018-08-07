@@ -6,6 +6,7 @@
           <b-table striped hover :items="filteredData" :fields="checkedFields"></b-table>
         </div>
         <div class="col-md-3">
+          <input class="form-control" type="text" v-model="search_term">
           <div v-for="field in fields" class="form-group">
             <input type="checkbox" :value="{key: field.key, sortable: true}" v-model="checkedFields">
             <label class="form-check-label" >{{field.key}}</label>
