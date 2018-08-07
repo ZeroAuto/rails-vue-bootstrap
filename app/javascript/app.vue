@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
+      <h1>{{errors}}</h1>
       <div class="row">
         <div class="col-md-9">
           <b-table striped hover :items="players" :fields="checkedFields"></b-table>
@@ -10,9 +11,9 @@
             <input type="checkbox" :value="{key: field.key, sortable: true}" v-model="checkedFields">
             <label class="form-check-label" >{{field.key}}</label>
           </div>
-          <button type="button" class="btn btn-primary">Save Filter</button>
+          <button type="button" class="btn btn-primary" v-on:click="saveFilterCurrent">Save Filter</button>
           <div v-for="filter in savedFilters">
-            <b-link href="#">{{filter.created_at}}</b-link>
+            <b-link href="#" v-on:click="loadSavedFilter(filter.fields)">{{filter.created_at}}</b-link>
           </div>
         </div>
       </div>
@@ -63,27 +64,36 @@ export default {
       this.errors.push(e)
     })
 
-    axios.get('/api/filters')
-    .then(response => {
-      this.savedFilters = response.data['filters']
-    })
-    .catch(e => {
-      console.log(e);
-      this.errors.push(e)
-    })
-
     this.checkedFields = this.fields
+    this.getSavedFilters()
   },
 
   methods: {
-    getSavedFilters() {
-      axios.get('http://localhost:5000/api/filters')
+    getSavedFilters: function() {
+      axios.get('/api/filters')
       .then(response => {
-        this.savedFilters = repsonse.data['filters']
+        this.savedFilters = response.data['filters']
       })
       .catch(e => {
         this.errors.push(e)
       })
+    },
+
+    loadSavedFilter: function(fields) {
+      this.checkedFields = fields
+    },
+
+    saveFilterCurrent: function() {
+      axios.post('/api/filters', {
+        fields: this.checkedFields
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+      this.getSavedFilters()
     }
   }
 }
