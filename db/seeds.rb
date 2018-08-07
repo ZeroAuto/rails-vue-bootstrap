@@ -52,7 +52,8 @@ Filter.create(
       key: 'game',
       sortable: true
     }
-  ]
+  ],
+  search_term: 'new york'
 )
 
 Filter.create(
@@ -69,5 +70,6 @@ Filter.create(
       key: 'balance',
       sortable: true
     }
-  ]
+  ],
+  search_term: 'los angeles'
 )
