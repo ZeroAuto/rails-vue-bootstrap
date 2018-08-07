@@ -1,7 +1,16 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <b-table striped hover :items="players['players']" :fields="fields"></b-table>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p>{{ message }}</p>
+          <b-table striped hover :items="players['players']" :fields="fields"></b-table>
+        </div>
+        <div class="col-md-3">
+          These should be some checkboxes here
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
