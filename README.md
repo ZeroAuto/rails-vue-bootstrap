@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+if you do not have postgres running locally you can follow the instructions here:
+https://coderwall.com/p/dovmsg/how-to-make-your-rails-app-start-talking-to-a-postgres-database
 
-Things you may want to cover:
+clone repo and create a .env file in the root with database username and password in like such:
 
-* Ruby version
+ ```
+POSTGRES_USER=<postgres_username>
+POSTGRES_PASSWORD=<password>
+ ```
 
-* System dependencies
 
-* Configuration
+run the following commands to start the app
+```
+bundle install
+yarn install
+rake db:create db:migrate db:seed
+foreman start
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
