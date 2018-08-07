@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  game: MyString
+  rating: 1
+  balance: 1
+  winnings: 1
+
+two:
+  name: MyString
+  game: MyString
+  rating: 1
+  balance: 1
+  winnings: 1
