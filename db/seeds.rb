@@ -31,7 +31,7 @@ games = [
   'Tennis'
 ]
 
-20.times do
+100.times do
   Player.create(
     name: Faker::FunnyName.name,
     city: cities[Random.rand(10)],
