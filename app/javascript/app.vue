@@ -12,6 +12,7 @@
             <label class="form-check-label" >{{field.key}}</label>
           </div>
           <button type="button" class="btn btn-primary" v-on:click="saveFilterCurrent">Save Filter</button>
+          <h3>Saved Filters</h3>
           <div v-for="filter in savedFilters">
             <b-link href="#" v-on:click="loadSavedFilter(filter.fields)">{{filter.created_at}}</b-link>
           </div>
