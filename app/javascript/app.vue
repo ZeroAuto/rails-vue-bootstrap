@@ -6,7 +6,10 @@
           <b-table striped hover :items="players['players']" :fields="checkedFields"></b-table>
         </div>
         <div class="col-md-3">
-          <input type='checkbox' v-for="field in fields" :value="{key: field.key, sortable: true}" v-model="checkedFields">
+          <div v-for="field in fields" class="form-group">
+            <input type="checkbox" :value="{key: field.key, sortable: true}" v-model="checkedFields">
+            <label class="form-check-label" >{{field.key}}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -19,28 +22,7 @@ export default {
   data: function () {
     return {
       players: [],
-      checkedFields: [
-        {
-          key: 'name',
-          sortable: true
-        },
-        {
-          key: 'game',
-          sortable: true
-        },
-        {
-          key: 'rating',
-          sortable: true
-        },
-        {
-          key: 'balance',
-          sortable: true
-        },
-        {
-          key: 'winnings',
-          sortable: true
-        }
-      ],
+      checkedFields: [],
       fields: [
         {
           key: 'name',
@@ -75,6 +57,8 @@ export default {
     .catch(e => {
       this.errors.push(e)
     })
+
+    this.checkedFields = this.fields
   }
 }
 </script>
