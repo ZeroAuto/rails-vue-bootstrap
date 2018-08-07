@@ -10,6 +10,7 @@
             <input type="checkbox" :value="{key: field.key, sortable: true}" v-model="checkedFields">
             <label class="form-check-label" >{{field.key}}</label>
           </div>
+          <button type="button" class="btn btn-primary">Save Filter</button>
         </div>
       </div>
     </div>
@@ -45,6 +46,7 @@ export default {
           sortable: true
         }
       ],
+      savedFilters: [],
       errors: []
     }
   },
