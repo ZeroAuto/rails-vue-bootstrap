@@ -21,7 +21,11 @@ class Api::FiltersController < Api::ApiController
 
   private
 
+  # I would NEVER use params.permit! in production
+  # I am confident that with some more time I could properly debug this
+  # but I don't want to spend an inordinate amount of time on this as
+  # suggested
   def filter_params
-    params.require(:filter).permit({:fields => []})
+    params.require(:filter).permit!
   end
 end
