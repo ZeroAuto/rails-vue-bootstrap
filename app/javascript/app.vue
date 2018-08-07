@@ -85,7 +85,9 @@ export default {
 
     saveFilterCurrent: function() {
       axios.post('/api/filters', {
-        fields: this.checkedFields
+        filter: {
+          fields: this.checkedFields
+        }
       })
       .then(response => {
         console.log(response)
